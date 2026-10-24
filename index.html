@@ -1,0 +1,1078 @@
+<!DOCTYPE html>
+<html lang="te">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTHING - AP DSC SA Telugu Practice Portal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            800: '#1e40af',
+                            900: '#1e3a8a',
+                        }
+                    },
+                    fontFamily: {
+                        telugu: ['"Gidugu"', '"Ramabhadra"', 'system-ui', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts for Telugu Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gidugu&family=Mandali&family=Noto+Sans+Telugu:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Telugu', system-ui, -apple-system, sans-serif;
+        }
+        
+        /* Print Styles for PDF Export */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+            .print-only {
+                display: block !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            .card-shadow {
+                box-shadow: none !important;
+                border: 1px solid #e2e8f0 !important;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.05);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(100, 116, 139, 0.4);
+            border-radius: 4px;
+        }
+
+        /* Glassmorphism subtle effect */
+        .glass-panel {
+            backdrop-filter: blur(8px);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+    <!-- TOP HEADER -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-800/95 border-b border-slate-200 dark:border-slate-700 shadow-sm glass-panel no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            
+            <!-- Brand Logo & Title -->
+            <div class="flex items-center space-x-3">
+                <div class="bg-primary-700 text-white font-bold text-xl px-3 py-1.5 rounded-lg shadow-md tracking-wider flex items-center justify-center">
+                    <span>N</span>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-tight">
+                        NOTHING
+                    </h1>
+                    <p class="text-xs text-primary-600 dark:text-primary-400 font-medium hidden sm:block">
+                        AP DSC SA Telugu Practice Portal (ఆంధ్రప్రదేశ్ ఉపాధ్యాయ నియామక పరీక్ష)
+                    </p>
+                </div>
+            </div>
+
+            <!-- Header Action Controls -->
+            <div class="flex items-center space-x-2 sm:space-x-4">
+                
+                <!-- Test History Toggle -->
+                <button id="btnHistory" class="p-2 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition flex items-center gap-1.5 text-sm font-medium" title="పరిక్షల చరిత్ర">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <span class="hidden md:inline">చరిత్ర (History)</span>
+                </button>
+
+                <!-- Audio Toggle -->
+                <button id="btnSound" class="p-2 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Sound Effects">
+                    <svg id="iconSoundOn" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path></svg>
+                    <svg id="iconSoundOff" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15zM17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path></svg>
+                </button>
+
+                <!-- Dark Mode Switch -->
+                <button id="btnTheme" class="p-2 text-slate-600 dark:text-slate-300 hover:text-primary-600 dark:hover:text-primary-400 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 transition" title="Toggle Theme">
+                    <svg id="iconMoon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                    <svg id="iconSun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- LIVE STATS BANNER (Appears during exam) -->
+    <section id="statsBanner" class="bg-primary-800 text-white shadow-inner no-print transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2.5 flex flex-wrap items-center justify-between gap-3 text-sm">
+            <div class="flex items-center space-x-4">
+                <span class="bg-primary-900/60 px-3 py-1 rounded-full text-xs font-semibold tracking-wide uppercase border border-primary-500/30">
+                    SA TELUGU MOCK TEST #1
+                </span>
+                <span class="font-medium text-primary-100">
+                    మొత్తం ప్రశ్నలు: <strong id="statTotalQ" class="text-white font-bold">10</strong>
+                </span>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="flex items-center space-x-2 bg-slate-900/40 px-3.5 py-1 rounded-lg border border-white/10">
+                <svg class="w-4 h-4 text-amber-400 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <span class="text-xs uppercase font-medium text-slate-300">సమయం (Time Left):</span>
+                <span id="timerDisplay" class="font-mono text-base font-bold text-amber-300">15:00</span>
+            </div>
+
+            <!-- Live Status Counters -->
+            <div class="hidden md:flex items-center space-x-4 text-xs font-medium">
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-emerald-400 inline-block"></span> సమాధానం ఇచ్చినవి: <strong id="statAnswered">0</strong></span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-purple-400 inline-block"></span> గుర్తించినవి: <strong id="statFlagged">0</strong></span>
+                <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-slate-400 inline-block"></span> మిగిలినవి: <strong id="statUnanswered">10</strong></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN APP CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+        <!-- ================= EXAM VIEW ================= -->
+        <div id="examView" class="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            
+            <!-- Question Content Area (Left 3 columns on LG) -->
+            <div class="lg:col-span-3 flex flex-col space-y-4">
+                
+                <!-- Main Question Card -->
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 p-5 sm:p-7 flex-grow flex flex-col justify-between">
+                    <div>
+                        <!-- Question Header -->
+                        <div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 dark:border-slate-700/60">
+                            <span class="text-xs font-bold uppercase tracking-wider text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-950/50 px-2.5 py-1 rounded border border-primary-200 dark:border-primary-800" id="qCategory">
+                                సాహిత్వ విభాగాము (Telugu Literature)
+                            </span>
+                            <button id="btnFlag" class="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-md border transition text-slate-600 dark:text-slate-300 border-slate-300 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700">
+                                <svg class="w-4 h-4 text-purple-500" fill="currentColor" viewBox="0 0 20 20"><path d="M3 6a1 1 0 011-1h10.586a1 1 0 01.707 1.707L13.414 8.5l1.879 1.793a1 1 0 01-.707 1.707H4v5a1 1 0 11-2 0V6z"></path></svg>
+                                <span id="flagText">మార్క్ ఫర్ రివ్యూ (Flag)</span>
+                            </button>
+                        </div>
+
+                        <!-- Question Prompt -->
+                        <div class="mb-6">
+                            <div class="flex items-start space-x-3">
+                                <span class="bg-primary-700 text-white text-sm font-bold rounded-lg px-2.5 py-1 shrink-0 mt-0.5" id="qNumberDisplay">
+                                    Q1
+                                </span>
+                                <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-slate-100 leading-relaxed font-telugu" id="qText">
+                                    ఆంధ్ర మహాభారతంలో 'కవిత్రయం' గా ప్రసిద్ధి చెందిన కవుల వరుస క్రమం ఏది?
+                                </h2>
+                            </div>
+                        </div>
+
+                        <!-- Options List -->
+                        <div class="space-y-3 pl-0 sm:pl-9" id="optionsContainer">
+                            <!-- Dynamic Options Generated JS -->
+                        </div>
+                    </div>
+
+                    <!-- Question Navigation Footer Controls -->
+                    <div class="mt-8 pt-5 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap items-center justify-between gap-3">
+                        <button id="btnPrev" class="px-5 py-2.5 text-sm font-medium rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 disabled:opacity-40 disabled:cursor-not-allowed transition flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                            వెనుకకు (Previous)
+                        </button>
+
+                        <div class="flex items-center gap-2">
+                            <button id="btnClear" class="px-4 py-2.5 text-xs font-semibold text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-lg transition border border-rose-200 dark:border-rose-900/50">
+                                క్లియర్ చేయి (Clear)
+                            </button>
+                            <button id="btnNext" class="px-6 py-2.5 text-sm font-semibold rounded-lg bg-primary-600 hover:bg-primary-700 text-white shadow-md transition flex items-center gap-2">
+                                తరువాత (Next)
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Question Palette / Navigation Grid (Right column) -->
+            <div class="lg:col-span-1">
+                <div class="bg-white dark:bg-slate-800 rounded-xl shadow-md border border-slate-200 dark:border-slate-700 p-5 sticky top-20">
+                    <div class="flex items-center justify-between pb-3 mb-4 border-b border-slate-100 dark:border-slate-700">
+                        <h3 class="font-bold text-slate-900 dark:text-slate-100 text-sm tracking-wide">
+                            ప్రశ్నల ప్యానెల్ (Question Palette)
+                        </h3>
+                        <span class="text-xs bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 px-2 py-0.5 rounded font-medium" id="paletteProgress">
+                            0/10
+                        </span>
+                    </div>
+
+                    <!-- Question Grid Numbers -->
+                    <div class="grid grid-cols-5 gap-2.5 mb-6" id="questionGrid">
+                        <!-- Dynamic Buttons generated by JS -->
+                    </div>
+
+                    <!-- Palette Status Legend -->
+                    <div class="space-y-2 pt-4 border-t border-slate-100 dark:border-slate-700 text-xs text-slate-600 dark:text-slate-300">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-emerald-500 inline-block shadow-sm"></span>
+                            <span>సమాధానం ఇచ్చారు (Answered)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-purple-500 inline-block shadow-sm"></span>
+                            <span>మార్క్ చేశారు (Review)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-slate-200 dark:bg-slate-700 inline-block border border-slate-300 dark:border-slate-600"></span>
+                            <span>ఇంకా ఇవ్వలేదు (Unanswered)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="w-3.5 h-3.5 rounded bg-white dark:bg-slate-800 border-2 border-primary-600 inline-block"></span>
+                            <span>ప్రస్తుత ప్రశ్న (Current)</span>
+                        </div>
+                    </div>
+
+                    <!-- Submit Exam Button -->
+                    <button id="btnSubmitExam" class="w-full mt-6 py-3 px-4 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold rounded-lg shadow-md transition flex items-center justify-center gap-2 text-sm">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                        పరిక్ష సమర్పించు (Submit Test)
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= RESULTS & ANALYSIS VIEW ================= -->
+        <div id="resultView" class="hidden space-y-8 max-w-5xl mx-auto">
+            
+            <!-- Result Summary Top Card -->
+            <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg border border-slate-200 dark:border-slate-700 p-6 sm:p-8 relative overflow-hidden card-shadow">
+                <!-- Decorative Badge -->
+                <div class="absolute -top-12 -right-12 w-32 h-32 bg-primary-500/10 rounded-full blur-2xl pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-100 dark:border-slate-700">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+                            పరిక్ష ఫలితాలు (Exam Results)
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white mt-2">
+                            AP DSC SA Telugu Mock Test Summary
+                        </h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1" id="resCompletedTime">
+                            పూర్తయిన సమయం: -
+                        </p>
+                    </div>
+
+                    <!-- Score Dial / Percentage Circle -->
+                    <div class="flex items-center space-x-4 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+                        <div class="text-center">
+                            <span class="text-3xl sm:text-4xl font-extrabold text-primary-600 dark:text-primary-400" id="resPercentage">
+                                0%
+                            </span>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">శాతం (Percentage)</p>
+                        </div>
+                        <div class="h-10 w-px bg-slate-200 dark:bg-slate-700"></div>
+                        <div class="text-center">
+                            <span class="text-2xl sm:text-3xl font-bold text-slate-800 dark:text-slate-100" id="resScoreRatio">
+                                0 / 10
+                            </span>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">మార్కులు (Marks)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Performance Indicators -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-6">
+                    <div class="bg-emerald-50 dark:bg-emerald-950/30 p-4 rounded-xl border border-emerald-100 dark:border-emerald-900/50 text-center">
+                        <span class="text-2xl font-bold text-emerald-600 dark:text-emerald-400" id="resCorrect">0</span>
+                        <p class="text-xs font-medium text-slate-600 dark:text-slate-300 mt-1">సరైనవి (Correct)</p>
+                    </div>
+                    <div class="bg-rose-50 dark:bg-rose-950/30 p-4 rounded-xl border border-rose-100 dark:border-rose-900/50 text-center">
+                        <span class="text-2xl font-bold text-rose-600 dark:text-rose-400" id="resIncorrect">0</span>
+                        <p class="text-xs font-medium text-slate-600 dark:text-slate-300 mt-1">తప్పులు (Incorrect)</p>
+                    </div>
+                    <div class="bg-slate-100 dark:bg-slate-700/50 p-4 rounded-xl border border-slate-200 dark:border-slate-600 text-center">
+                        <span class="text-2xl font-bold text-slate-600 dark:text-slate-300" id="resSkipped">0</span>
+                        <p class="text-xs font-medium text-slate-600 dark:text-slate-300 mt-1">రాయలేనివి (Skipped)</p>
+                    </div>
+                    <div class="bg-blue-50 dark:bg-blue-950/30 p-4 rounded-xl border border-blue-100 dark:border-blue-900/50 text-center">
+                        <span class="text-2xl font-bold text-blue-600 dark:text-blue-400" id="resTimeTaken">00:00</span>
+                        <p class="text-xs font-medium text-slate-600 dark:text-slate-300 mt-1">తీసుకున్న సమయం (Time)</p>
+                    </div>
+                </div>
+
+                <!-- Print & Restart Controls -->
+                <div class="mt-8 flex flex-wrap items-center justify-end gap-3 no-print">
+                    <button id="btnRetake" class="px-5 py-2.5 bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-800 dark:text-white font-semibold rounded-lg text-sm transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+                        మళ్ళీ ప్రయత్నించు (Retake)
+                    </button>
+                    <button id="btnPrint" class="px-5 py-2.5 bg-primary-600 hover:bg-primary-700 text-white font-semibold rounded-lg text-sm shadow transition flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                        PDF ప్రింట్ / సేవ్ (Print PDF)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Detailed Question-by-Question Analysis Header -->
+            <div>
+                <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+                    <span>ప్రశ్నల వారీ వివరణాత్మక జవాబులు (Question Analysis)</span>
+                </h3>
+
+                <!-- Dynamic Container for Analysis Items -->
+                <div id="analysisContainer" class="space-y-4">
+                    <!-- Dynamic analysis cards injected via JS -->
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- HISTORY MODAL / DRAWER -->
+    <div id="historyModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4 no-print">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 max-w-lg w-full max-h-[80vh] flex flex-col overflow-hidden">
+            <div class="px-6 py-4 border-b border-slate-100 dark:border-slate-700 flex items-center justify-between">
+                <h3 class="text-lg font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                    <svg class="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    పరిక్ష ఫలితాల చరిత్ర (Past Attempts)
+                </h3>
+                <button id="btnCloseHistory" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            
+            <div class="p-6 overflow-y-auto flex-grow" id="historyListContainer">
+                <!-- History Items injected via JS -->
+            </div>
+
+            <div class="px-6 py-3 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                <button id="btnClearHistory" class="text-xs text-rose-600 hover:underline font-medium">
+                    చరిత్ర క్లియర్ చేయి (Clear History)
+                </button>
+                <button id="btnCloseHistory2" class="px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 text-xs font-semibold rounded-lg">
+                    మూసివేయి (Close)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUBMIT CONFIRMATION MODAL -->
+    <div id="submitModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4 no-print">
+        <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-xl border border-slate-200 dark:border-slate-700 max-w-md w-full p-6 text-center space-y-4">
+            <div class="w-12 h-12 bg-amber-100 dark:bg-amber-950/60 text-amber-600 dark:text-amber-400 rounded-full flex items-center justify-center mx-auto">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 dark:text-white">
+                పరిక్షను సమర్పించాలనుకుంటున్నారా?
+            </h3>
+            <div class="text-sm text-slate-600 dark:text-slate-300 space-y-1 bg-slate-50 dark:bg-slate-900/50 p-3 rounded-lg text-left">
+                <p>• సమాధానమిచ్చినవి: <strong id="modalAnswered" class="text-emerald-600">0</strong></p>
+                <p>• సమాధానమివ్వనివి: <strong id="modalUnanswered" class="text-rose-600">0</strong></p>
+                <p>• రివ్యూ కొరకు గుర్తించినవి: <strong id="modalFlagged" class="text-purple-600">0</strong></p>
+            </div>
+            <div class="flex items-center gap-3 pt-2">
+                <button id="btnCancelSubmit" class="w-1/2 py-2.5 border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-200 font-semibold rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700 text-sm">
+                    రద్దు చేయి (Cancel)
+                </button>
+                <button id="btnConfirmSubmit" class="w-1/2 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-lg shadow text-sm">
+                    సమర్పించు (Confirm)
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // ================= QUESTION BANK (AP DSC SA TELUGU SAMPLE DATA) =================
+        const questionsData = [
+            {
+                id: 1,
+                category: "సాహిత్య విభాగము (Telugu Literature)",
+                question: "ఆంధ్ర మహాభారతంలో 'కవిత్రయం' గా ప్రసిద్ధి చెందిన కవుల సరియైన వరుస క్రమం ఏది?",
+                options: [
+                    "నన్నయ, తిక్కన, ఎర్రన",
+                    "తిక్కన, నన్నయ, ఎర్రన",
+                    "నన్నయ, శ్రీనాథుడు, పోతన",
+                    "ఎర్రన, తిక్కన, నన్నయ"
+                ],
+                answer: 0,
+                explanation: "తెలుగులో మహాభారతాన్ని ఆంధ్రీకరించిన నన్నయ (11వ శతాబ్దం - ఆది, సభా పర్వాలు, అరణ్య పర్వ శేషం), తిక్కన (13వ శతాబ్దం - విరాట పర్వం నుండి స్వర్గారోహణ వరకు 15 పర్వాలు), మరియు ఎర్రన (14వ శతాబ్దం - అరణ్య పర్వ శేషం) లను కవిత్రయంగా పిలుస్తారు."
+            },
+            {
+                id: 2,
+                category: "వ్యాకరణము - సంధులు (Grammar - Sandhi)",
+                question: "'రామాలయము' అను పదము ఏ సంధికి ఉదాహరణ?",
+                options: [
+                    "గుణ సంధి",
+                    "సవర్ణదీర్ఘ సంధి",
+                    "వృద్ధి సంధి",
+                    "యణాదేశ సంధి"
+                ],
+                answer: 1,
+                explanation: "రామ + ఆలయము = రామాలయము. అ, ఇ, ఉ, ఋ లనకు అవే అచ్చులు పరమైనప్పుడు వాటి దీర్ఘము ఏకాదేశమగును. కావున ఇది సవర్ణదీర్ఘ సంధి సూత్రానికి చెందుతుంది."
+            },
+            {
+                id: 3,
+                category: "వ్యాకరణము - సమాసాలు (Grammar - Samasa)",
+                question: "'తల్లిదండ్రులు' అను సమాసము ఏ సమాస రకానికి చెందుతుంది?",
+                options: [
+                    "తత్పురుష సమాసము",
+                    "ద్విగు సమాసము",
+                    "ద్వంద్వ సమాసము",
+                    "బహువ్రీహి సమాసము"
+                ],
+                answer: 2,
+                explanation: "ఉభయ పదార్థ ప్రాధాన్యము గలది ద్వంద్వ సమాసము (తల్లియును + తండ్రియును). కావున 'తల్లిదండ్రులు' అనేది ద్వంద్వ సమాసము."
+            },
+            {
+                id: 4,
+                category: "ఛందస్సు (Chandas)",
+                question: "'ఉత్పలమాల' పద్య పాదంలో ఉండే మొత్తం అక్షరాల సంఖ్య ఎంత?",
+                options: [
+                    "19 అక్షరాలు",
+                    "20 అక్షరాలు",
+                    "21 అక్షరాలు",
+                    "22 అక్షరాలు"
+                ],
+                answer: 1,
+                explanation: "ఉత్పలమాల పద్య పాదంలో 'భ-ర-న-భ-భ-ర-వ' అనే గణాలు ఉంటాయి. దీని ప్రతి పాదంలోనూ సరిగ్గా 20 అక్షరాలు ఉంటాయి. యతి స్థానం 10వ అక్షరం."
+            },
+            {
+                id: 5,
+                category: "అలంకారాలు (Alankara)",
+                question: "'ఉపమాన ఉపమేయములకు మనోహరమైన పోలికను చెప్పునది' ఏ అలంకారము?",
+                options: [
+                    "రూపకాలంకారము",
+                    "ఉత్ప్రేక్షాలంకారము",
+                    "ఉపమాలంకారము",
+                    "అతిశయోక్తి అలంకారము"
+                ],
+                answer: 2,
+                explanation: "రెండు వస్తువుల మధ్యగల సాదృశ్యాన్ని (పోలికను) మనోహరంగా వర్ణించి చెబితే దానిని ఉపమాలంకారం అంటారు. (ఉదా: ఆమె ముఖము పద్మము వలె అందముగా ఉన్నది)."
+            },
+            {
+                id: 6,
+                category: "తెలుగు బోధనా పద్ధతులు (Telugu Pedagogy)",
+                question: "భాషా నైపుణ్యాల సరియైన వర్గీకరణ వరస క్రమం (LSRW) ఏది?",
+                options: [
+                    "శ్రవణం, భాషణం, పఠనం, లేఖనం",
+                    "భాషణం, శ్రవణం, లేఖనం, పఠనం",
+                    "పఠనం, శ్రవణం, భాషణం, లేఖనం",
+                    "శ్రవణం, పఠనం, భాషణం, లేఖనం"
+                ],
+                answer: 0,
+                explanation: "ప్రాథమిక భాషా నైపుణ్యాల క్రమం: 1. శ్రవణం (Listening), 2. భాషణం/భాషించడం (Speaking), 3. పఠనం (Reading), 4. లేఖనం/వ్రాయడం (Writing)."
+            },
+            {
+                id: 7,
+                category: "సాహిత్య విభాగము (Telugu Literature)",
+                question: "పాల్కురికి సోమనాథుడు రచించిన తొలి ద్విపద కావ్యము ఏది?",
+                options: [
+                    "పండితారాధ్య చరిత్రము",
+                    "బసవ పురాణము",
+                    "వృషాధిప శతకము",
+                    "అనుభవ సారము"
+                ],
+                answer: 1,
+                explanation: "దేశి కవితోద్యమానికి ఆద్యుడైన పాల్కురికి సోమనాథుడు శైవ మత ప్రచారానికై స్వతంత్రంగా రచించిన తొలి ద్విపద కావ్యం 'బసవ పురాణము'."
+            },
+            {
+                id: 8,
+                category: "వ్యాకరణము - విభాక్తులు (Grammar - Vibhakti)",
+                question: "'వలనన్, కంటేన్, పట్టి' అనునవి ఏ విభక్తి ప్రత్యయాలు?",
+                options: [
+                    "తృతీయ విభక్తి",
+                    "చతుర్థీ విభక్తి",
+                    "పంచమీ విభక్తి",
+                    "షష్ఠీ విభక్తి"
+                ],
+                answer: 2,
+                explanation: "పంచమీ విభక్తి ప్రత్యయాలు: వలనన్, కంటేన్, పట్టి. (తృతీయ: చేతన్, చేన్, తోడన్, తోన్; చతుర్థి: కొరకున్, కై; షష్ఠి: కిన్, కున్, యొక్క, లోన్, లోపలన్)."
+            },
+            {
+                id: 9,
+                category: "తెలుగు బోధనా పద్ధతులు (Methodology)",
+                question: "పద్య బోధనలో విద్యార్థులలో భావ గ్రహణ శక్తినీ, సౌందర్యాత్మకతనూ పెంపొందించే ముఖ్యమైన సోపానం ఏది?",
+                options: [
+                    "ఆదర్శ పఠనం",
+                    "భావానువాదం / రాగాత్మక గానం",
+                    "ప్రవేశకం",
+                    "కవి పరిచయం"
+                ],
+                answer: 1,
+                explanation: "పద్య బోధనలో రాగాత్మక గానం మరియు భావానువాదం ద్వారా విద్యార్థులు పద్య సౌందర్యాన్ని, రసాస్వాదనను మరియు కవి భావాన్ని లోతుగా గ్రహించగలుగుతారు."
+            },
+            {
+                id: 10,
+                category: "సాహిత్య విభాగము (Telugu Literature)",
+                question: "ఆంధ్ర భోజుడుగా పేరుగాంచిన శ్రీకృష్ణదేవరాయల ఆస్థానంలోని కవుల సమూహాన్ని ఏమని పిలుస్తారు?",
+                options: [
+                    "కవిత్రయం",
+                    "అష్టదిగ్గజాలు",
+                    "నవరత్నాలు",
+                    "రాయల పండితులు"
+                ],
+                answer: 1,
+                explanation: "విజయనగర సామ్రాజ్యాధీశుడు శ్రీకృష్ణదేవరాయల భువనవిజయం అనే ఆస్థానంలో అల్లసాని పెద్దన, నంది తిమ్మన వంటి ఎనిమిది మంది ప్రసిద్ధ కవులను 'అష్టదిగ్గజాలు' అని పిలిచేవారు."
+            }
+        ];
+
+        // ================= APP STATE MANAGEMENT =================
+        let currentQuestionIndex = 0;
+        let userAnswers = new Array(questionsData.length).fill(null);
+        let flaggedQuestions = new Array(questionsData.length).fill(false);
+        
+        const TEST_DURATION_SECONDS = 15 * 60; // 15 Minutes
+        let timeRemaining = TEST_DURATION_SECONDS;
+        let timerInterval = null;
+        let isAudioEnabled = true;
+
+        // Web Audio API Sound Synthesizer (No external audio files needed)
+        const playTone = (freq, type = 'sine', duration = 0.08) => {
+            if (!isAudioEnabled) return;
+            try {
+                const AudioCtx = window.AudioContext || window.webkitAudioContext;
+                if (!AudioCtx) return;
+                const ctx = new AudioCtx();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.type = type;
+                osc.frequency.setValueAtTime(freq, ctx.currentTime);
+                gain.gain.setValueAtTime(0.1, ctx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start();
+                osc.stop(ctx.currentTime + duration);
+            } catch (e) {
+                // Audio safely ignored if muted/blocked by browser policy
+            }
+        };
+
+        // ================= DOM ELEMENTS =================
+        const examView = document.getElementById('examView');
+        const resultView = document.getElementById('resultView');
+        const statsBanner = document.getElementById('statsBanner');
+        
+        const qCategory = document.getElementById('qCategory');
+        const qNumberDisplay = document.getElementById('qNumberDisplay');
+        const qText = document.getElementById('qText');
+        const optionsContainer = document.getElementById('optionsContainer');
+        const questionGrid = document.getElementById('questionGrid');
+        
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const btnClear = document.getElementById('btnClear');
+        const btnFlag = document.getElementById('btnFlag');
+        const flagText = document.getElementById('flagText');
+        const btnSubmitExam = document.getElementById('btnSubmitExam');
+
+        const timerDisplay = document.getElementById('timerDisplay');
+        const statAnswered = document.getElementById('statAnswered');
+        const statFlagged = document.getElementById('statFlagged');
+        const statUnanswered = document.getElementById('statUnanswered');
+        const statTotalQ = document.getElementById('statTotalQ');
+        const paletteProgress = document.getElementById('paletteProgress');
+
+        // Dark mode & Audio Controls
+        const btnTheme = document.getElementById('btnTheme');
+        const iconMoon = document.getElementById('iconMoon');
+        const iconSun = document.getElementById('iconSun');
+        const btnSound = document.getElementById('btnSound');
+        const iconSoundOn = document.getElementById('iconSoundOn');
+        const iconSoundOff = document.getElementById('iconSoundOff');
+
+        // Modals
+        const submitModal = document.getElementById('submitModal');
+        const btnCancelSubmit = document.getElementById('btnCancelSubmit');
+        const btnConfirmSubmit = document.getElementById('btnConfirmSubmit');
+        const historyModal = document.getElementById('historyModal');
+        const btnHistory = document.getElementById('btnHistory');
+        const btnCloseHistory = document.getElementById('btnCloseHistory');
+        const btnCloseHistory2 = document.getElementById('btnCloseHistory2');
+        const btnClearHistory = document.getElementById('btnClearHistory');
+        const historyListContainer = document.getElementById('historyListContainer');
+        const btnRetake = document.getElementById('btnRetake');
+        const btnPrint = document.getElementById('btnPrint');
+
+        // ================= INIT & SETUP =================
+        window.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            setupPaletteGrid();
+            renderQuestion();
+            startTimer();
+            updateStats();
+        });
+
+        // Theme Toggle Handler
+        function initTheme() {
+            if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+                iconMoon.classList.add('hidden');
+                iconSun.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.remove('dark');
+                iconSun.classList.add('hidden');
+                iconMoon.classList.remove('hidden');
+            }
+        }
+
+        btnTheme.addEventListener('click', () => {
+            playTone(600, 'sine', 0.05);
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                iconSun.classList.add('hidden');
+                iconMoon.classList.remove('hidden');
+            } else {
+                document.documentElement.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                iconMoon.classList.add('hidden');
+                iconSun.classList.remove('hidden');
+            }
+        });
+
+        btnSound.addEventListener('click', () => {
+            isAudioEnabled = !isAudioEnabled;
+            if (isAudioEnabled) {
+                iconSoundOn.classList.remove('hidden');
+                iconSoundOff.classList.add('hidden');
+                playTone(800, 'triangle', 0.1);
+            } else {
+                iconSoundOn.classList.add('hidden');
+                iconSoundOff.classList.remove('hidden');
+            }
+        });
+
+        // ================= TIMER LOGIC =================
+        function startTimer() {
+            clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                timeRemaining--;
+                
+                const minutes = Math.floor(timeRemaining / 60);
+                const seconds = timeRemaining % 60;
+                timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                if (timeRemaining <= 60) {
+                    timerDisplay.classList.add('text-rose-400', 'animate-ping');
+                }
+
+                if (timeRemaining <= 0) {
+                    clearInterval(timerInterval);
+                    playTone(300, 'sawtooth', 0.4);
+                    submitExam();
+                }
+            }, 1000);
+        }
+
+        // ================= PALETTE GRID SETUP =================
+        function setupPaletteGrid() {
+            questionGrid.innerHTML = '';
+            statTotalQ.textContent = questionsData.length;
+
+            questionsData.forEach((q, idx) => {
+                const btn = document.createElement('button');
+                btn.id = `paletteBtn_${idx}`;
+                btn.textContent = idx + 1;
+                btn.className = `w-9 h-9 rounded-lg text-xs font-bold transition flex items-center justify-center border focus:outline-none focus:ring-2 focus:ring-primary-500`;
+                btn.addEventListener('click', () => {
+                    playTone(500, 'sine', 0.04);
+                    currentQuestionIndex = idx;
+                    renderQuestion();
+                });
+                questionGrid.appendChild(btn);
+            });
+        }
+
+        function updatePaletteGrid() {
+            questionsData.forEach((_, idx) => {
+                const btn = document.getElementById(`paletteBtn_${idx}`);
+                if (!btn) return;
+
+                const isCurrent = idx === currentQuestionIndex;
+                const isAnswered = userAnswers[idx] !== null;
+                const isFlagged = flaggedQuestions[idx];
+
+                // Reset styling
+                btn.className = `w-9 h-9 rounded-lg text-xs font-bold transition flex items-center justify-center border focus:outline-none`;
+
+                if (isCurrent) {
+                    btn.classList.add('ring-2', 'ring-primary-600', 'dark:ring-primary-400', 'scale-105', 'font-extrabold');
+                }
+
+                if (isFlagged) {
+                    btn.classList.add('bg-purple-600', 'text-white', 'border-purple-700');
+                } else if (isAnswered) {
+                    btn.classList.add('bg-emerald-600', 'text-white', 'border-emerald-700');
+                } else {
+                    btn.classList.add('bg-slate-100', 'dark:bg-slate-700', 'text-slate-700', 'dark:text-slate-200', 'border-slate-300', 'dark:border-slate-600');
+                }
+            });
+
+            updateStats();
+        }
+
+        function updateStats() {
+            const answeredCount = userAnswers.filter(a => a !== null).length;
+            const flaggedCount = flaggedQuestions.filter(f => f).length;
+            const unansweredCount = questionsData.length - answeredCount;
+
+            statAnswered.textContent = answeredCount;
+            statFlagged.textContent = flaggedCount;
+            statUnanswered.textContent = unansweredCount;
+            paletteProgress.textContent = `${answeredCount}/${questionsData.length}`;
+        }
+
+        // ================= QUESTION RENDER =================
+        function renderQuestion() {
+            const currentQ = questionsData[currentQuestionIndex];
+            
+            qCategory.textContent = currentQ.category;
+            qNumberDisplay.textContent = `Q${currentQuestionIndex + 1}`;
+            qText.textContent = currentQ.question;
+
+            // Flag Button State
+            if (flaggedQuestions[currentQuestionIndex]) {
+                btnFlag.classList.add('bg-purple-100', 'dark:bg-purple-950/60', 'border-purple-400', 'text-purple-700', 'dark:text-purple-300');
+                flagText.textContent = "గుర్తించబడింది (Flagged)";
+            } else {
+                btnFlag.classList.remove('bg-purple-100', 'dark:bg-purple-950/60', 'border-purple-400', 'text-purple-700', 'dark:text-purple-300');
+                flagText.textContent = "మార్క్ ఫర్ రివ్యూ (Flag)";
+            }
+
+            // Options
+            optionsContainer.innerHTML = '';
+            const optionLabels = ['A', 'B', 'C', 'D'];
+
+            currentQ.options.forEach((optText, optIdx) => {
+                const isSelected = userAnswers[currentQuestionIndex] === optIdx;
+                
+                const optCard = document.createElement('label');
+                optCard.className = `flex items-center p-3.5 sm:p-4 rounded-xl border-2 cursor-pointer transition-all ${
+                    isSelected 
+                    ? 'border-primary-600 bg-primary-50/70 dark:bg-primary-950/40 dark:border-primary-500 shadow-sm' 
+                    : 'border-slate-200 dark:border-slate-700 hover:border-slate-300 dark:hover:border-slate-600 hover:bg-slate-50 dark:hover:bg-slate-700/50'
+                }`;
+
+                optCard.innerHTML = `
+                    <div class="flex items-center space-x-3 w-full">
+                        <input type="radio" name="questionOption" value="${optIdx}" ${isSelected ? 'checked' : ''} class="w-4 h-4 text-primary-600 focus:ring-primary-500 border-slate-300">
+                        <span class="w-6 h-6 rounded-full ${isSelected ? 'bg-primary-600 text-white' : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'} font-semibold text-xs flex items-center justify-center shrink-0">
+                            ${optionLabels[optIdx]}
+                        </span>
+                        <span class="text-sm sm:text-base text-slate-800 dark:text-slate-100 font-medium font-telugu">
+                            ${optText}
+                        </span>
+                    </div>
+                `;
+
+                optCard.querySelector('input').addEventListener('change', () => {
+                    playTone(650, 'sine', 0.06);
+                    userAnswers[currentQuestionIndex] = optIdx;
+                    renderQuestion();
+                    updatePaletteGrid();
+                });
+
+                optionsContainer.appendChild(optCard);
+            });
+
+            // Nav buttons disabled state
+            btnPrev.disabled = currentQuestionIndex === 0;
+            if (currentQuestionIndex === questionsData.length - 1) {
+                btnNext.innerHTML = `ముగించు (Finish)`;
+            } else {
+                btnNext.innerHTML = `తరువాత (Next) <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>`;
+            }
+
+            updatePaletteGrid();
+        }
+
+        // ================= NAVIGATION BUTTON HANDLERS =================
+        btnNext.addEventListener('click', () => {
+            playTone(450, 'sine', 0.04);
+            if (currentQuestionIndex < questionsData.length - 1) {
+                currentQuestionIndex++;
+                renderQuestion();
+            } else {
+                openSubmitModal();
+            }
+        });
+
+        btnPrev.addEventListener('click', () => {
+            playTone(400, 'sine', 0.04);
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                renderQuestion();
+            }
+        });
+
+        btnClear.addEventListener('click', () => {
+            playTone(350, 'sine', 0.05);
+            userAnswers[currentQuestionIndex] = null;
+            renderQuestion();
+            updatePaletteGrid();
+        });
+
+        btnFlag.addEventListener('click', () => {
+            playTone(700, 'triangle', 0.06);
+            flaggedQuestions[currentQuestionIndex] = !flaggedQuestions[currentQuestionIndex];
+            renderQuestion();
+            updatePaletteGrid();
+        });
+
+        // ================= SUBMIT EXAM & RESULTS =================
+        function openSubmitModal() {
+            playTone(550, 'sine', 0.08);
+            const answeredCount = userAnswers.filter(a => a !== null).length;
+            const flaggedCount = flaggedQuestions.filter(f => f).length;
+            const unansweredCount = questionsData.length - answeredCount;
+
+            document.getElementById('modalAnswered').textContent = answeredCount;
+            document.getElementById('modalUnanswered').textContent = unansweredCount;
+            document.getElementById('modalFlagged').textContent = flaggedCount;
+
+            submitModal.classList.remove('hidden');
+        }
+
+        btnSubmitExam.addEventListener('click', openSubmitModal);
+        btnCancelSubmit.addEventListener('click', () => submitModal.classList.add('hidden'));
+
+        btnConfirmSubmit.addEventListener('click', () => {
+            submitModal.classList.add('hidden');
+            submitExam();
+        });
+
+        function submitExam() {
+            clearInterval(timerInterval);
+            playTone(880, 'sine', 0.2);
+
+            const timeTakenSeconds = TEST_DURATION_SECONDS - timeRemaining;
+            const minutesTaken = Math.floor(timeTakenSeconds / 60);
+            const secondsTaken = timeTakenSeconds % 60;
+            const timeTakenFormatted = `${minutesTaken.toString().padStart(2, '0')}:${secondsTaken.toString().padStart(2, '0')}`;
+
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let skippedCount = 0;
+
+            questionsData.forEach((q, idx) => {
+                const ans = userAnswers[idx];
+                if (ans === null) {
+                    skippedCount++;
+                } else if (ans === q.answer) {
+                    correctCount++;
+                } else {
+                    incorrectCount++;
+                }
+            });
+
+            const totalScore = correctCount;
+            const percentage = Math.round((totalScore / questionsData.length) * 100);
+
+            // Render Result Summary Banner
+            document.getElementById('resPercentage').textContent = `${percentage}%`;
+            document.getElementById('resScoreRatio').textContent = `${totalScore} / ${questionsData.length}`;
+            document.getElementById('resCorrect').textContent = correctCount;
+            document.getElementById('resIncorrect').textContent = incorrectCount;
+            document.getElementById('resSkipped').textContent = skippedCount;
+            document.getElementById('resTimeTaken').textContent = timeTakenFormatted;
+            
+            const now = new Date();
+            document.getElementById('resCompletedTime').textContent = `పూర్తయిన సమయం: ${now.toLocaleDateString('te-IN')} | ${now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}`;
+
+            // Render Detailed Analysis Cards
+            renderAnalysis(userAnswers);
+
+            // Save Attempt to LocalStorage History
+            saveAttemptToHistory({
+                date: now.toLocaleDateString('te-IN') + ' ' + now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
+                score: totalScore,
+                total: questionsData.length,
+                percentage: percentage,
+                timeTaken: timeTakenFormatted
+            });
+
+            // Switch Views
+            examView.classList.add('hidden');
+            statsBanner.classList.add('hidden');
+            resultView.classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ================= ANALYSIS DETAILED VIEW =================
+        function renderAnalysis(answers) {
+            const analysisContainer = document.getElementById('analysisContainer');
+            analysisContainer.innerHTML = '';
+
+            const optionLabels = ['A', 'B', 'C', 'D'];
+
+            questionsData.forEach((q, idx) => {
+                const userAns = answers[idx];
+                const isCorrect = userAns === q.answer;
+                const isSkipped = userAns === null;
+
+                let borderClass = 'border-slate-200 dark:border-slate-700';
+                let statusBadge = '';
+
+                if (isCorrect) {
+                    borderClass = 'border-emerald-300 dark:border-emerald-800 bg-emerald-50/30 dark:bg-emerald-950/20';
+                    statusBadge = `<span class="bg-emerald-100 dark:bg-emerald-900/60 text-emerald-800 dark:text-emerald-300 text-xs font-bold px-2.5 py-1 rounded-full border border-emerald-300 dark:border-emerald-700 flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> సరియైనది (Correct)</span>`;
+                } else if (isSkipped) {
+                    borderClass = 'border-slate-300 dark:border-slate-600 bg-slate-50/50 dark:bg-slate-900/40';
+                    statusBadge = `<span class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold px-2.5 py-1 rounded-full border border-slate-300 dark:border-slate-600">వ్రాయలేదు (Skipped)</span>`;
+                } else {
+                    borderClass = 'border-rose-300 dark:border-rose-800 bg-rose-50/30 dark:bg-rose-950/20';
+                    statusBadge = `<span class="bg-rose-100 dark:bg-rose-900/60 text-rose-800 dark:text-rose-300 text-xs font-bold px-2.5 py-1 rounded-full border border-rose-300 dark:border-rose-700 flex items-center gap-1"><svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg> తప్పు (Incorrect)</span>`;
+                }
+
+                const card = document.createElement('div');
+                card.className = `bg-white dark:bg-slate-800 rounded-xl p-5 border ${borderClass} shadow-sm space-y-3 card-shadow`;
+
+                let optionsListHtml = '';
+                q.options.forEach((optText, optIdx) => {
+                    let optStyle = 'border-slate-200 dark:border-slate-700/60 text-slate-700 dark:text-slate-300';
+                    let badge = '';
+
+                    if (optIdx === q.answer) {
+                        optStyle = 'border-emerald-500 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-900 dark:text-emerald-200 font-semibold';
+                        badge = `<span class="ml-auto text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-100 dark:bg-emerald-900/80 px-2 py-0.5 rounded">సరియైన సమాధానం</span>`;
+                    } else if (optIdx === userAns && !isCorrect) {
+                        optStyle = 'border-rose-500 bg-rose-50 dark:bg-rose-950/50 text-rose-900 dark:text-rose-200 font-semibold';
+                        badge = `<span class="ml-auto text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-100 dark:bg-rose-900/80 px-2 py-0.5 rounded">మీరు ఎంచుకున్నది</span>`;
+                    }
+
+                    optionsListHtml += `
+                        <div class="flex items-center p-2.5 rounded-lg border text-sm font-telugu ${optStyle}">
+                            <span class="w-5 h-5 rounded-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold text-xs flex items-center justify-center mr-2.5 shrink-0">
+                                ${optionLabels[optIdx]}
+                            </span>
+                            <span>${optText}</span>
+                            ${badge}
+                        </div>
+                    `;
+                });
+
+                card.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <span class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
+                            ప్రశ్న ${idx + 1} (${q.category})
+                        </span>
+                        ${statusBadge}
+                    </div>
+
+                    <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white font-telugu">
+                        ${q.question}
+                    </h4>
+
+                    <div class="space-y-2 pt-1">
+                        ${optionsListHtml}
+                    </div>
+
+                    <!-- Explanation Box -->
+                    <div class="mt-3 p-3.5 bg-blue-50/70 dark:bg-slate-900/60 rounded-lg border border-blue-100 dark:border-slate-700 text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-telugu leading-relaxed">
+                        <strong class="text-primary-700 dark:text-primary-400 block mb-1">వివరణ (Explanation):</strong>
+                        ${q.explanation}
+                    </div>
+                `;
+
+                analysisContainer.appendChild(card);
+            });
+        }
+
+        // ================= HISTORY & LOCALSTORAGE =================
+        function saveAttemptToHistory(attemptObj) {
+            let history = JSON.parse(localStorage.getItem('nothing_dsc_history') || '[]');
+            history.unshift(attemptObj);
+            if (history.length > 20) history = history.slice(0, 20); // Keep last 20
+            localStorage.setItem('nothing_dsc_history', JSON.stringify(history));
+        }
+
+        function loadHistoryList() {
+            const history = JSON.parse(localStorage.getItem('nothing_dsc_history') || '[]');
+            historyListContainer.innerHTML = '';
+
+            if (history.length === 0) {
+                historyListContainer.innerHTML = `
+                    <div class="text-center py-8 text-slate-500 dark:text-slate-400 text-sm">
+                        ఇంతకు ముందు వ్రాసిన పరిక్షలు ఏమీ లేవు (No history found).
+                    </div>
+                `;
+                return;
+            }
+
+            history.forEach((item, idx) => {
+                const el = document.createElement('div');
+                el.className = 'p-4 rounded-xl border border-slate-200 dark:border-slate-700 mb-3 bg-slate-50 dark:bg-slate-900/40 flex items-center justify-between';
+                el.innerHTML = `
+                    <div>
+                        <div class="text-xs text-slate-500 dark:text-slate-400 font-medium">${item.date}</div>
+                        <div class="text-sm font-bold text-slate-800 dark:text-white mt-0.5">
+                            సాధించిన మార్కులు: ${item.score} / ${item.total}
+                        </div>
+                        <div class="text-xs text-slate-600 dark:text-slate-300">తీసుకున్న సమయం: ${item.timeTaken}</div>
+                    </div>
+                    <div class="text-right">
+                        <span class="text-xl font-extrabold text-primary-600 dark:text-primary-400">${item.percentage}%</span>
+                    </div>
+                `;
+                historyListContainer.appendChild(el);
+            });
+        }
+
+        btnHistory.addEventListener('click', () => {
+            playTone(500, 'sine', 0.05);
+            loadHistoryList();
+            historyModal.classList.remove('hidden');
+        });
+
+        btnCloseHistory.addEventListener('click', () => historyModal.classList.add('hidden'));
+        btnCloseHistory2.addEventListener('click', () => historyModal.classList.add('hidden'));
+
+        btnClearHistory.addEventListener('click', () => {
+            if (confirm('చరిత్రను తొలగించాలనుకుంటున్నారా? (Clear history?)')) {
+                localStorage.removeItem('nothing_dsc_history');
+                loadHistoryList();
+            }
+        });
+
+        // ================= RETAKE & PRINT =================
+        btnRetake.addEventListener('click', () => {
+            playTone(600, 'sine', 0.08);
+            currentQuestionIndex = 0;
+            userAnswers = new Array(questionsData.length).fill(null);
+            flaggedQuestions = new Array(questionsData.length).fill(false);
+            timeRemaining = TEST_DURATION_SECONDS;
+
+            timerDisplay.classList.remove('text-rose-400', 'animate-ping');
+            resultView.classList.add('hidden');
+            statsBanner.classList.remove('hidden');
+            examView.classList.remove('hidden');
+
+            setupPaletteGrid();
+            renderQuestion();
+            startTimer();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        btnPrint.addEventListener('click', () => {
+            playTone(700, 'sine', 0.1);
+            window.print();
+        });
+    </script>
+</body>
+</html>
