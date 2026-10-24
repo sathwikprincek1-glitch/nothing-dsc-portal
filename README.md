@@ -29,4 +29,4 @@
 
 1. Clone the repository:
    ```bash
-   git clone [https://github.com/YOUR-USERNAME/nothing-dsc-portal.git](https://github.com/YOUR-USERNAME/nothing-dsc-portal.git)
+   git clone [https://github.com/sathwikprincek1-glitch/nothing-dsc-portal.git](https://github.com/sathwikprincek1-glitch/nothing-dsc-portal.git)
